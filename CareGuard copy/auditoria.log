@@ -1,0 +1,93 @@
+[2026-10-25 18:42:02,511] - WARNING - Usuario_ID: ANONIMO | Rol: ADMIN | Accion: LOGIN | Estado: DENEGADO/FALLO | Detalles: Usuario no encontrado o inactivo: admin
+[2026-10-25 18:42:54,006] - WARNING - Usuario_ID: ANONIMO | Rol: ADMIN | Accion: LOGIN | Estado: DENEGADO/FALLO | Detalles: Usuario no encontrado o inactivo: admin
+[2026-10-25 18:43:34,524] - WARNING - Usuario_ID: ANONIMO | Rol: ADMIN | Accion: LOGIN | Estado: DENEGADO/FALLO | Detalles: Usuario no encontrado o inactivo: admin
+[2026-10-25 18:44:33,126] - INFO - Usuario_ID: 1 | Rol: ADMIN | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-25 18:44:33,161] - INFO - Usuario_ID: 1 | Rol: ADMIN | Accion: CONSULTA_DASHBOARD_METRICAS | Estado: EXITO | Detalles: 
+[2026-10-25 18:45:04,361] - INFO - Usuario_ID: 1 | Rol: ADMIN | Accion: ALTA_USUARIO | Estado: EXITO | Detalles: Nuevo usuario ID 5 (axel) con rol MEDICO
+[2026-10-25 18:45:50,602] - INFO - Usuario_ID: ANONIMO | Rol: PACIENTE | Accion: EVALUACION_KIOSCO | Estado: EXITO | Detalles: Calificación: 4 estrellas
+[2026-10-25 18:46:12,304] - INFO - Usuario_ID: ANONIMO | Rol: PACIENTE | Accion: EVALUACION_KIOSCO | Estado: EXITO | Detalles: Calificación: 2 estrellas
+[2026-10-25 18:46:42,488] - INFO - Usuario_ID: 2 | Rol: MEDICO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-25 18:46:46,688] - INFO - Usuario_ID: 2 | Rol: MEDICO | Accion: CHECK_IN | Estado: EXITO | Detalles: Jornada ID 1 iniciada
+[2026-10-25 18:48:58,847] - INFO - Usuario_ID: 2 | Rol: MEDICO | Accion: CHECK_OUT | Estado: EXITO | Detalles: Jornada ID 1 cerrada. Horas trab: 0.04, Horas extra: 0.0
+[2026-10-25 18:48:58,852] - INFO - Usuario_ID: 2 | Rol: MEDICO | Accion: EVALUACION_EMOCIONAL | Estado: EXITO | Detalles: Estrés: 9
+[2026-10-25 18:49:14,740] - INFO - Usuario_ID: 2 | Rol: MEDICO | Accion: GENERAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 1 (VOLUNTARIO) registrada: Solicitud directa de acompañamiento psicológico emitida por el usuario. Nota: Solicitado desde panel médico
+[2026-10-25 18:50:46,127] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-25 18:50:46,168] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-25 18:50:57,408] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-25 18:50:57,410] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_EXPEDIENTE_CONFIDENCIAL | Estado: EXITO | Detalles: Expediente visto para Médico ID 2
+[2026-10-25 18:51:09,292] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-25 18:51:32,986] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-25 18:51:32,988] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_EXPEDIENTE_CONFIDENCIAL | Estado: EXITO | Detalles: Expediente visto para Médico ID 2
+[2026-10-25 18:53:23,057] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: ACTUALIZAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 1 -> EN_ATENCION
+[2026-10-25 18:53:24,940] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-25 18:53:32,951] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: ACTUALIZAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 1 -> CERRADA
+[2026-10-25 18:53:34,505] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-25 18:53:36,423] - INFO - Usuario_ID: 3 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-25 18:54:15,261] - WARNING - Usuario_ID: 1 | Rol: PSICOLOGO | Accion: LOGIN | Estado: DENEGADO/FALLO | Detalles: Discrepancia de rol solicitada (PSICOLOGO) vs asignada (ADMIN)
+[2026-10-25 18:54:19,058] - WARNING - Usuario_ID: 1 | Rol: ENFERMERO | Accion: LOGIN | Estado: DENEGADO/FALLO | Detalles: Discrepancia de rol solicitada (ENFERMERO) vs asignada (ADMIN)
+[2026-10-25 18:54:23,091] - INFO - Usuario_ID: 1 | Rol: ADMIN | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-25 18:54:23,121] - INFO - Usuario_ID: 1 | Rol: ADMIN | Accion: CONSULTA_DASHBOARD_METRICAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:15:38,846] - INFO - Usuario_ID: 6 | Rol: ADMIN | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:15:38,920] - INFO - Usuario_ID: 6 | Rol: ADMIN | Accion: CONSULTA_DASHBOARD_METRICAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:16:23,256] - INFO - Usuario_ID: ANONIMO | Rol: PACIENTE | Accion: EVALUACION_KIOSCO | Estado: EXITO | Detalles: Calificación: 4 estrellas
+[2026-10-27 10:16:48,078] - INFO - Usuario_ID: 6 | Rol: ADMIN | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:16:48,141] - INFO - Usuario_ID: 6 | Rol: ADMIN | Accion: CONSULTA_DASHBOARD_METRICAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:18:21,357] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:18:46,136] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: CHECK_IN | Estado: EXITO | Detalles: Jornada ID 92 iniciada
+[2026-10-27 10:19:09,685] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: GENERAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 36 (VOLUNTARIO) registrada: Solicitud directa de acompañamiento psicológico emitida por el usuario. Nota: Solicitud voluntaria desde panel médico.
+[2026-10-27 10:20:25,200] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:20:25,362] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:20:40,457] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:20:40,459] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_EXPEDIENTE_CONFIDENCIAL | Estado: EXITO | Detalles: Expediente visto para Médico ID 10
+[2026-10-27 10:20:58,368] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:20:58,369] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_EXPEDIENTE_CONFIDENCIAL | Estado: EXITO | Detalles: Expediente visto para Médico ID 8
+[2026-10-27 10:21:19,883] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:26:58,108] - WARNING - Usuario_ID: ANONIMO | Rol: DESCONOCIDO | Accion: LOGIN | Estado: DENEGADO/FALLO | Detalles: Usuario no encontrado: pisco1
+[2026-10-27 10:27:16,897] - WARNING - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: DENEGADO/FALLO | Detalles: Contraseña incorrecta
+[2026-10-27 10:27:24,725] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:27:24,839] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:27:28,585] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:30:06,913] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:30:07,027] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:30:18,724] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:30:18,726] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_EXPEDIENTE_CONFIDENCIAL | Estado: EXITO | Detalles: Expediente visto para Médico ID 8
+[2026-10-27 10:30:22,506] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:31:11,046] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:31:44,756] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: CHECK_IN | Estado: EXITO | Detalles: Jornada ID 93 iniciada
+[2026-10-27 10:31:50,082] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: CHECK_OUT | Estado: EXITO | Detalles: Jornada ID 93 cerrada. Horas trab: 0.0, Horas extra: 0.0
+[2026-10-27 10:31:50,091] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: EVALUACION_EMOCIONAL | Estado: EXITO | Detalles: Estrés: 10
+[2026-10-27 10:31:50,102] - INFO - Usuario_ID: 8 | Rol: SISTEMA | Accion: GENERAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 37 (ALGORITMO) registrada: Sobrecarga horaria: 25.7h extra acumuladas en 7 días (Límite: 12.0h). | Estrés crónico sostenido: Nivel >= 7 registrado en los últimos 3 turnos.
+[2026-10-27 10:32:12,925] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:32:13,037] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:32:17,945] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:32:17,947] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_EXPEDIENTE_CONFIDENCIAL | Estado: EXITO | Detalles: Expediente visto para Médico ID 8
+[2026-10-27 10:32:28,062] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:34:00,413] - WARNING - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: DENEGADO/FALLO | Detalles: Contraseña incorrecta
+[2026-10-27 10:34:06,372] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:34:06,478] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:34:09,265] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:35:13,067] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: ACTUALIZAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 37 -> EN_ATENCION
+[2026-10-27 10:35:13,069] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:35:19,588] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:36:44,262] - INFO - Usuario_ID: ANONIMO | Rol: PACIENTE | Accion: EVALUACION_KIOSCO | Estado: EXITO | Detalles: Calificación: 5 estrellas
+[2026-10-27 10:37:02,934] - INFO - Usuario_ID: 6 | Rol: ADMIN | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:37:02,992] - INFO - Usuario_ID: 6 | Rol: ADMIN | Accion: CONSULTA_DASHBOARD_METRICAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:37:46,893] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:37:50,972] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: CHECK_IN | Estado: EXITO | Detalles: Jornada ID 94 iniciada
+[2026-10-27 10:38:11,590] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: CHECK_OUT | Estado: EXITO | Detalles: Jornada ID 94 cerrada. Horas trab: 0.01, Horas extra: 0.0
+[2026-10-27 10:38:11,597] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: EVALUACION_EMOCIONAL | Estado: EXITO | Detalles: Estrés: 10
+[2026-10-27 10:38:11,608] - INFO - Usuario_ID: 8 | Rol: SISTEMA | Accion: GENERAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 38 (ALGORITMO) registrada: Sobrecarga horaria: 25.7h extra acumuladas en 7 días (Límite: 12.0h). | Estrés crónico sostenido: Nivel >= 7 registrado en los últimos 3 turnos.
+[2026-10-27 10:38:42,582] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:38:42,694] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:38:56,910] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:38:56,912] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_EXPEDIENTE_CONFIDENCIAL | Estado: EXITO | Detalles: Expediente visto para Médico ID 8
+[2026-10-27 10:39:22,897] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:40:06,117] - INFO - Usuario_ID: 8 | Rol: MEDICO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:40:55,621] - INFO - Usuario_ID: 10 | Rol: ENFERMERO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:41:06,050] - INFO - Usuario_ID: 10 | Rol: MEDICO | Accion: GENERAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 39 (VOLUNTARIO) registrada: Solicitud directa de acompañamiento psicológico emitida por el usuario. Nota: Solicitud voluntaria desde panel médico.
+[2026-10-27 10:41:21,410] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: LOGIN | Estado: EXITO | Detalles: Autenticación exitosa
+[2026-10-27 10:41:21,522] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:41:29,656] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: ACTUALIZAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 39 -> EN_ATENCION
+[2026-10-27 10:41:29,658] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
+[2026-10-27 10:41:39,567] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: ACTUALIZAR_ALERTA | Estado: EXITO | Detalles: Alerta ID 39 -> CERRADA
+[2026-10-27 10:41:39,568] - INFO - Usuario_ID: 7 | Rol: PSICOLOGO | Accion: CONSULTA_BANDEJA_ALERTAS | Estado: EXITO | Detalles: 
