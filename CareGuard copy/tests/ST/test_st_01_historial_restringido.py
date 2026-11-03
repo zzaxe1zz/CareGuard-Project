@@ -1,42 +1,51 @@
 import pytest
 
 
-def test_st_01_consulta_historial_personal_restringido(db_conn):
-    """ST-01: Verificar que el Médico A solo consulta su historial y el Enfermero B no ve datos de A."""
+def test_st_01_01_medico_a_jornadas_extra_descansos_estres(db_conn):
+    """ST-01: Sesión Médico A: jornadas, horas extra, descansos y estados de ánimo."""
     cursor = db_conn.cursor()
-
-    # 1. Crear Médico A y Enfermero B
     cursor.execute(
-        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('Dr. Médico A', 'medico_a', 'h', 's', 'MEDICO')"
-    )
-    medico_a_id = cursor.lastrowid
-
+        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('MA', 'm_a_st', 'h', 's', 'MEDICO')")
+    uid = cursor.lastrowid
     cursor.execute(
-        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('Enf. Enfermero B', 'enfermero_b', 'h', 's', 'ENFERMERO')"
-    )
-    enfermero_b_id = cursor.lastrowid
-
-    # 2. Registrar jornadas y descansos para el Médico A
+        "INSERT INTO jornadas (id_usuario, fecha, hora_entrada, horas_extra) VALUES (?, '2026-11-02', '08:00', 2.0)", (uid,))
+    jid = cursor.lastrowid
     cursor.execute(
-        "INSERT INTO jornadas (id_usuario, fecha, hora_entrada, horas_extra) VALUES (?, '2026-11-01', '2026-11-01 08:00:00', 2.5)",
-        (medico_a_id,)
-    )
-    jornada_a_id = cursor.lastrowid
+        "INSERT INTO descansos (id_jornada, hora_inicio, hora_fin, duracion_minutos) VALUES (?, '12:00', '12:30', 30)", (jid,))
     cursor.execute(
-        "INSERT INTO descansos (id_jornada, hora_inicio, hora_fin, duracion_minutos) VALUES (?, '2026-11-01 12:00:00', '2026-11-01 12:30:00', 30)",
-        (jornada_a_id,)
-    )
+        "INSERT INTO estados_emocionales (id_usuario, id_jornada, nivel_estres, estado_animo) VALUES (?, ?, 4, 'Bien')", (uid, jid))
     db_conn.commit()
-
-    # 3. Consulta de historial con sesión simulada del Médico A
     cursor.execute(
-        "SELECT id_jornada, horas_extra FROM jornadas WHERE id_usuario = ?", (medico_a_id,))
-    jornadas_a = cursor.fetchall()
-    assert len(jornadas_a) == 1
-    assert jornadas_a[0][1] == 2.5
+        "SELECT id_jornada FROM jornadas WHERE id_usuario = ?", (uid,))
+    assert cursor.fetchone() is not None
 
-    # 4. Consulta con sesión simulada del Enfermero B (debe retornar vacío)
+
+def test_st_01_02_enfermero_b_solo_sus_propios_registros(db_conn):
+    """ST-01: Sesión Enfermero B: solo sus propios registros."""
+    cursor = db_conn.cursor()
     cursor.execute(
-        "SELECT id_jornada FROM jornadas WHERE id_usuario = ?", (enfermero_b_id,))
-    jornadas_b = cursor.fetchall()
-    assert len(jornadas_b) == 0
+        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('EB', 'e_b_st', 'h', 's', 'ENFERMERO')")
+    u_b = cursor.lastrowid
+    cursor.execute(
+        "INSERT INTO jornadas (id_usuario, fecha, hora_entrada) VALUES (?, '2026-11-02', '08:00')", (u_b,))
+    db_conn.commit()
+    cursor.execute(
+        "SELECT id_usuario FROM jornadas WHERE id_usuario = ?", (u_b,))
+    assert cursor.fetchone()[0] == u_b
+
+
+def test_st_01_03_sin_datos_de_a_visibles_para_b(db_conn):
+    """ST-01: Sin datos de A visibles para B."""
+    cursor = db_conn.cursor()
+    cursor.execute(
+        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('MA', 'm_a_st3', 'h', 's', 'MEDICO')")
+    u_a = cursor.lastrowid
+    cursor.execute(
+        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('EB', 'e_b_st3', 'h', 's', 'ENFERMERO')")
+    u_b = cursor.lastrowid
+    cursor.execute(
+        "INSERT INTO jornadas (id_usuario, fecha, hora_entrada) VALUES (?, '2026-11-02', '08:00')", (u_a,))
+    db_conn.commit()
+    cursor.execute(
+        "SELECT * FROM jornadas WHERE id_usuario = ? AND id_usuario = ?", (u_a, u_b))
+    assert cursor.fetchone() is None

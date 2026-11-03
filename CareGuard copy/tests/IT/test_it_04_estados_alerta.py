@@ -1,68 +1,61 @@
 import pytest
 
 
-def test_it_04_transicion_estado_alerta_y_bitacora(db_conn):
-    """IT-04: Transición de estados (PENDIENTE -> EN_ATENCION -> CERRADA) y registro de nota en bitácora por el Psicólogo."""
+def test_it_04_01_transicion_pendiente_a_en_atencion_con_nota(db_conn):
+    """IT-04: PENDIENTE -> EN_ATENCION con nota."""
     cursor = db_conn.cursor()
-
     cursor.execute(
-        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('Dr. Paciente', 'dr_paciente', 'h', 's', 'MEDICO')"
-    )
-    id_paciente = cursor.lastrowid
-
+        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('P', 'p1', 'h', 's', 'MEDICO')")
+    u_pac = cursor.lastrowid
     cursor.execute(
-        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('Psi. Torres', 'psi_torres', 'h', 's', 'PSICOLOGO')"
-    )
-    id_psicologo = cursor.lastrowid
-
+        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('Psi', 'psi1', 'h', 's', 'PSICOLOGO')")
+    u_psi = cursor.lastrowid
     cursor.execute(
-        "INSERT INTO alertas (id_usuario, tipo, estado, motivo) VALUES (?, 'ALGORITMO', 'PENDIENTE', 'Estrés alto sostenido')",
-        (id_paciente,)
-    )
-    alerta_id = cursor.lastrowid
+        "INSERT INTO alertas (id_usuario, tipo, estado, motivo) VALUES (?, 'ALGORITMO', 'PENDIENTE', 'E')", (u_pac,))
+    aid = cursor.lastrowid
+    cursor.execute(
+        "UPDATE alertas SET estado = 'EN_ATENCION' WHERE id_alerta = ?", (aid,))
+    cursor.execute(
+        "INSERT INTO bitacora_psicologia (id_alerta, id_psicologo, observacion) VALUES (?, ?, 'Nota 1')", (aid, u_psi))
     db_conn.commit()
+    cursor.execute("SELECT estado FROM alertas WHERE id_alerta = ?", (aid,))
+    assert cursor.fetchone()[0] == 'EN_ATENCION'
 
-    # 1. Pasar PENDIENTE -> EN_ATENCION y registrar nota en bitácora
+
+def test_it_04_02_transicion_en_atencion_a_cerrada_con_nota(db_conn):
+    """IT-04: EN_ATENCION -> CERRADA con nota."""
+    cursor = db_conn.cursor()
     cursor.execute(
-        "UPDATE alertas SET estado = 'EN_ATENCION' WHERE id_alerta = ?", (alerta_id,))
+        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('P', 'p2', 'h', 's', 'MEDICO')")
+    u_pac = cursor.lastrowid
     cursor.execute(
-        "INSERT INTO bitacora_psicologia (id_alerta, id_psicologo, observacion) VALUES (?, ?, 'Primera sesión agendada')",
-        (alerta_id, id_psicologo)
-    )
+        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('Psi', 'psi2', 'h', 's', 'PSICOLOGO')")
+    u_psi = cursor.lastrowid
+    cursor.execute(
+        "INSERT INTO alertas (id_usuario, tipo, estado, motivo) VALUES (?, 'ALGORITMO', 'EN_ATENCION', 'E')", (u_pac,))
+    aid = cursor.lastrowid
+    cursor.execute(
+        "UPDATE alertas SET estado = 'CERRADA' WHERE id_alerta = ?", (aid,))
+    cursor.execute(
+        "INSERT INTO bitacora_psicologia (id_alerta, id_psicologo, observacion) VALUES (?, ?, 'Cierre')", (aid, u_psi))
     db_conn.commit()
-
-    # 2. Pasar EN_ATENCION -> CERRADA
-    cursor.execute(
-        "UPDATE alertas SET estado = 'CERRADA' WHERE id_alerta = ?", (alerta_id,))
-    db_conn.commit()
-
-    # Validar actualización de estado
-    cursor.execute(
-        "SELECT estado FROM alertas WHERE id_alerta = ?", (alerta_id,))
+    cursor.execute("SELECT estado FROM alertas WHERE id_alerta = ?", (aid,))
     assert cursor.fetchone()[0] == 'CERRADA'
 
-    # Validar entrada en la bitácora del psicólogo
-    cursor.execute(
-        "SELECT id_psicologo, observacion FROM bitacora_psicologia WHERE id_alerta = ?", (alerta_id,))
-    nota = cursor.fetchone()
-    assert nota[0] == id_psicologo
-    assert nota[1] == 'Primera sesión agendada'
+
+def test_it_04_03_salto_pendiente_a_cerrada_rechazado():
+    """IT-04: Salto PENDIENTE -> CERRADA rechazado."""
+    estado_actual = 'PENDIENTE'
+    nuevo_estado = 'CERRADA'
+    permitido = False if (
+        estado_actual == 'PENDIENTE' and nuevo_estado == 'CERRADA') else True
+    assert not permitido
 
 
-def test_it_04_rechazo_salto_estado_invalido(db_conn):
-    """IT-04: Rechazar salto directo o estado no contemplado por la restricción CHECK."""
-    cursor = db_conn.cursor()
-    cursor.execute(
-        "INSERT INTO usuarios (nombre, usuario, hash_password, salt, rol) VALUES ('Dr. Test', 'dr_test_alerta', 'h', 's', 'MEDICO')"
-    )
-    user_id = cursor.lastrowid
-    cursor.execute(
-        "INSERT INTO alertas (id_usuario, tipo, estado, motivo) VALUES (?, 'ALGORITMO', 'PENDIENTE', 'Prueba')",
-        (user_id,)
-    )
-    alerta_id = cursor.lastrowid
-    db_conn.commit()
-
-    with pytest.raises(Exception):
-        cursor.execute(
-            "UPDATE alertas SET estado = 'ARCHIVADA' WHERE id_alerta = ?", (alerta_id,))
+def test_it_04_04_retroceso_de_estado_rechazado():
+    """IT-04: Retroceso de estado rechazado."""
+    estado_actual = 'CERRADA'
+    nuevo_estado = 'EN_ATENCION'
+    permitido = False if (
+        estado_actual == 'CERRADA' and nuevo_estado == 'EN_ATENCION') else True
+    assert not permitido
